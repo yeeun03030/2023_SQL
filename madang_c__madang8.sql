@@ -84,3 +84,20 @@ from book b, orders o, customer c
 where b.bookid = o.bookid and o.custid = c.custid and saleprice >= 20000;
 
 select * from hightorders;
+
+-- insertbook 프로시저 실행
+exec insertbook(13, '스포츠과학', '마당과학서적', 25000);
+
+select * from book;
+
+exec insertorupdate(12, '스포츠 즐거움', '마당과학서적', 30000);
+
+exec insertorupdate(12, '스포츠 즐거움', '마당과학서적', 20000);
+
+set serveroutput on;
+declare
+    averageVal number;
+begin
+    averagePrice(averageVal);
+    dbms_output.put_line('도서평균가격: '||averageVal);
+end;
